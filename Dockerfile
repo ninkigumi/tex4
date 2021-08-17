@@ -32,7 +32,7 @@ RUN tlmgr --repository http://www.texlive.info/tlgpg/ install tlgpg && \
     tlmgr update --self --all && \
     tlmgr install japanese-otf-nonfree \
     japanese-otf-uptex-nonfree \
-    ptex-fontmaps-macos \
+    ptex-fontmaps-macos
 
 RUN mkdir -p /System/Library/Fonts \
  && touch '/System/Library/Fonts/ヒラギノ明朝 ProN.ttc' \
