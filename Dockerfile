@@ -45,12 +45,24 @@ RUN mkdir -p /System/Library/Fonts \
  && touch '/System/Library/Fonts/ヒラギノ角ゴシック W6.ttc' \
  && touch '/System/Library/Fonts/ヒラギノ角ゴシック W7.ttc' \
  && touch '/System/Library/Fonts/ヒラギノ角ゴシック W8.ttc' \
- && touch '/System/Library/Fonts/ヒラギノ角ゴシック W9.ttc' \
- && cjk-gs-integrate --link-texmf --fontdef-add cjkgs-macos-highsierra.dat \
- && cjk-gs-integrate-macos --link-texmf \
- && kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron \
- && mktexlsr \
- && rm -f /System/Library/Fonts/*.ttc \
+ && touch '/System/Library/Fonts/ヒラギノ角ゴシック W9.ttc'
+
+RUN tlmgr repository add http://contrib.texlive.info/current tlcontrib
+RUN tlmgr pinning add tlcontrib '*'
+RUN tlmgr install japanese-otf-nonfree japanese-otf-uptex-nonfree ptex-fontmaps-macos cjk-gs-integrate-macos
+RUN tlmgr install cjk-gs-integrate adobemapping
+RUN tlmgr path add
+RUN cjk-gs-integrate --link-texmf --cleanup
+RUN cjk-gs-integrate-macos --link-texmf --fontdef-add=cjkgs-macos-highsierra.dat
+RUN mktexlsr
+RUN kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron
+
+#RUN cjk-gs-integrate --link-texmf --fontdef-add cjkgs-macos-highsierra.dat \
+# && cjk-gs-integrate-macos --link-texmf \
+# && kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron \
+# && mktexlsr \
+
+RUN rm -f /System/Library/Fonts/*.ttc \
  && apk del .build-deps && \
     rm -fr /tmp/install-tl-unx
 
