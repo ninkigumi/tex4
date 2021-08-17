@@ -49,8 +49,7 @@ RUN mkdir -p /System/Library/Fonts \
 
 RUN tlmgr repository add http://contrib.texlive.info/current tlcontrib
 RUN tlmgr pinning add tlcontrib '*'
-RUN tlmgr install japanese-otf-nonfree japanese-otf-uptex-nonfree ptex-fontmaps-macos cjk-gs-integrate-macos
-RUN tlmgr install cjk-gs-integrate adobemapping
+RUN tlmgr install japanese-otf-nonfree japanese-otf-uptex-nonfree ptex-fontmaps-macos cjk-gs-integrate-macos cjk-gs-integrate adobemapping
 RUN tlmgr path add
 RUN cjk-gs-integrate --link-texmf --cleanup
 RUN cjk-gs-integrate-macos --link-texmf --fontdef-add=cjkgs-macos-highsierra.dat
