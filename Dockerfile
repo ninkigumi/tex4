@@ -6,6 +6,10 @@ LABEL lastupdate=2021.5.1
 
 ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
 
+RUN apk fetch gnupg \
+    && apk add gnupg \
+    && gpg --list-keys
+
 RUN apk add --no-cache perl fontconfig-dev freetype-dev \
                        curl wget lha tar xz ghostscript && \
     mkdir /tmp/install-tl-unx && \
