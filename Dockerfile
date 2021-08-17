@@ -56,7 +56,7 @@ RUN mkdir -p /System/Library/Fonts \
 #RUN mktexlsr
 #RUN kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron
 
-RUN curl -fsSL https://www.preining.info/rsa.asc | sudo tlmgr key add -
+RUN curl -fsSL https://www.preining.info/rsa.asc | tlmgr key add -
 RUN tlmgr repository add http://contrib.texlive.info/current tlcontrib
 RUN tlmgr pinning add tlcontrib '*'
 RUN tlmgr repository status
