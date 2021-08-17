@@ -24,12 +24,14 @@ RUN apk add --no-cache perl fontconfig-dev freetype-dev \
       collection-langjapanese \
       lualatex-math \
       xetex xecjk ctex \
-      latexmk light-latex-make \
-      japanese-otf-nonfree \
+      latexmk light-latex-make
+      
+RUN tlmgr install japanese-otf-nonfree \
     japanese-otf-uptex-nonfree \
     ptex-fontmaps-macos \
-    cjk-gs-integrate-macos \
- && mkdir -p /System/Library/Fonts \
+    cjk-gs-integrate-macos
+
+RUN mkdir -p /System/Library/Fonts \
  && touch '/System/Library/Fonts/ヒラギノ明朝 ProN.ttc' \
  && touch '/System/Library/Fonts/ヒラギノ丸ゴ ProN W4.ttc' \
  && touch '/System/Library/Fonts/ヒラギノ角ゴシック W0.ttc' \
