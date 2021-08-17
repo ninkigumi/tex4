@@ -5,7 +5,7 @@ FROM frolvlad/alpine-glibc:latest
 LABEL lastupdate=2021.5.1
 
 ENV TL_VERSION      2021
-ENV TL_PATH         /usr/local/texlive
+ENV TL_PATH         /usr/local/texlive/${TL_VERSION}
 ENV PATH            ${TL_PATH}/bin/x86_64-linux:${TL_PATH}/bin/aarch64-linux:/bin:${PATH}
 
 RUN apk add --no-cache gnupg perl fontconfig-dev freetype-dev \
