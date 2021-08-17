@@ -28,6 +28,7 @@ RUN apk add --no-cache perl fontconfig-dev freetype-dev \
       
 RUN tlmgr repository add https://contrib.texlive.info/current tlcontrib && \
     tlmgr pinning add tlcontrib '*' && \
+    tlmgr update --self --all && \
     tlmgr install japanese-otf-nonfree \
     japanese-otf-uptex-nonfree \
     ptex-fontmaps-macos \
