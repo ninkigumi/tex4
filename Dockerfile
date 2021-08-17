@@ -32,7 +32,6 @@ RUN tlmgr repository add https://contrib.texlive.info/current tlcontrib && \
     tlmgr install japanese-otf-nonfree \
     japanese-otf-uptex-nonfree \
     ptex-fontmaps-macos \
-    cjk-gs-integrate-macos
 
 RUN mkdir -p /System/Library/Fonts \
  && touch '/System/Library/Fonts/ヒラギノ明朝 ProN.ttc' \
@@ -48,6 +47,7 @@ RUN mkdir -p /System/Library/Fonts \
  && touch '/System/Library/Fonts/ヒラギノ角ゴシック W8.ttc' \
  && touch '/System/Library/Fonts/ヒラギノ角ゴシック W9.ttc' \
  && cjk-gs-integrate --link-texmf --fontdef-add cjkgs-macos-highsierra.dat \
+ && cjk-gs-integrate-macos --link-texmf \
  && kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron \
  && mktexlsr \
  && rm -f /System/Library/Fonts/*.ttc \
