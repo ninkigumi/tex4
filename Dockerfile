@@ -17,6 +17,7 @@ RUN apk add --no-cache perl fontconfig-dev freetype-dev \
       "tlpdbopt_install_srcfiles 0" \
       > /tmp/install-tl-unx/texlive.profile && \
     /tmp/install-tl-unx/install-tl \
+      -repository https://ctan.math.washington.edu/tex-archive/systems/texlive/tlnet/ && \
       --profile=/tmp/install-tl-unx/texlive.profile && \
     tlmgr install \
       collection-latexextra \
