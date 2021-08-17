@@ -61,6 +61,7 @@ RUN tlmgr repository add http://contrib.texlive.info/current tlcontrib
 RUN tlmgr pinning add tlcontrib '*'
 RUN tlmgr repository status
 RUN tlmgr install japanese-otf-nonfree japanese-otf-uptex-nonfree ptex-fontmaps-macos cjk-gs-integrate-macos
+RUN /usr/local/texbin/cjk-gs-integrate --link-texmf --cleanup
 RUN /usr/local/texbin/cjk-gs-integrate-macos --link-texmf
 RUN kanji-config-updmap-sys status
 
