@@ -26,7 +26,7 @@ RUN apk add --no-cache perl fontconfig-dev freetype-dev \
       xetex xecjk ctex \
       latexmk light-latex-make
       
-RUN tlmgr --repository http://www.preining.info/tlgpg/ install tlgpg && \
+RUN tlmgr --repository http://www.texlive.info/tlgpg/ install tlgpg && \
     tlmgr repository add https://contrib.texlive.info/current tlcontrib && \
     tlmgr pinning add tlcontrib '*' && \
     tlmgr update --self --all && \
