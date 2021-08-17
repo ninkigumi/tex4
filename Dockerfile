@@ -4,7 +4,9 @@
 FROM frolvlad/alpine-glibc:latest
 LABEL lastupdate=2021.5.1
 
-ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
+ENV TL_VERSION      2021
+ENV TL_PATH         /usr/local/texlive
+ENV PATH            ${TL_PATH}/bin/x86_64-linux:${TL_PATH}/bin/aarch64-linux:/bin:${PATH}
 
 RUN apk add --no-cache gnupg perl fontconfig-dev freetype-dev \
                        curl wget lha tar xz ghostscript && \
@@ -61,8 +63,8 @@ RUN tlmgr repository add http://contrib.texlive.info/current tlcontrib
 RUN tlmgr pinning add tlcontrib '*'
 RUN tlmgr repository status
 RUN tlmgr install japanese-otf-nonfree japanese-otf-uptex-nonfree ptex-fontmaps-macos cjk-gs-integrate-macos
-RUN /usr/local/texbin/cjk-gs-integrate --link-texmf --cleanup
-RUN /usr/local/texbin/cjk-gs-integrate-macos --link-texmf
+RUN cjk-gs-integrate --link-texmf --cleanup
+RUN cjk-gs-integrate-macos --link-texmf
 RUN kanji-config-updmap-sys status
 
 
