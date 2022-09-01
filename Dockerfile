@@ -39,15 +39,15 @@ RUN mkdir install-tl-unx && \
     rm -rf *
 
 # Set up Japanese fonts
-RUN tlmgr repository add http://contrib.texlive.info/current tlcontrib && \
-    tlmgr pinning add tlcontrib '*' && \
-    tlmgr install \
+RUN tlmgr repository add http://contrib.texlive.info/current tlcontrib
+RUN tlmgr pinning add tlcontrib '*'
+RUN tlmgr install \
       collection-latexextra \
       collection-fontsrecommended \
       collection-langjapanese \
       japanese-otf-nonfree \
-      japanese-otf-uptex-nonfree \
-    wget -q -O /usr/local/bin/llmk https://raw.githubusercontent.com/wtsnjp/llmk/master/llmk.lua && \
+      japanese-otf-uptex-nonfree
+RUN wget -q -O /usr/local/bin/llmk https://raw.githubusercontent.com/wtsnjp/llmk/master/llmk.lua && \
     chmod +x /usr/local/bin/llmk
 
 
